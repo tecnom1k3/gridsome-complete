@@ -1,0 +1,15 @@
+services:
+  strapi-build:
+    build:
+      context: .
+      target: builder
+    volumes:
+      - ./output:/opt
+  strapi-dev:
+    build: 
+      context: .
+      target: develop
+    volumes:
+      - ./output/app:/opt/app
+    depends_on:
+      - strapi-build
